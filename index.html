@@ -23,6 +23,14 @@
         * As opções do HTML select devem ser: Arial, Monaco e Bradley Hand
     -->
 
+    <select id="font">
+      <option value="Arial">Arial</option>
+      <option value="Monaco">Monaco</option>
+      <option value="Bradley Hand">Bradley Hand</option>
+    </select>
+    <button onclick="changeFont()"> -></button>
+    <!-- feito -->
+
     <script>
       /**
        * Troca a cor do fundo da página
@@ -44,17 +52,27 @@
          * escolhido no no local *localStorage* sempre que o usuário selecionar
          * o tipo da fonte por meio do HTML select.
          */
+        
+        let inputFont = document.getElementById("font");
+        document.body.style.fontFamily = inputFont.value;
+        localStorage.setItem("font", inputFont.value);
+        console.log(localStorage.getItem("font"))
       }
 
       /**
        * Inicializa o localStorage
+       * ( a função onload carrega aqui primeiro)
        */
       function load() {
         document.body.style.backgroundColor = localStorage.getItem("color");
+  
         /**
          * 3 - Altere o método `load` para recuperar o nome da fonte do *localStorage* e
          * estilizar o texto `Web Storage`
          */
+
+        document.body.style.fontFamily = localStorage.getItem("font");
+        
       }
     </script>
   </body>
